@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Smart IDReader Sample</string>
+    <string name="message">Position the document within the frame.</string>
+</resources>

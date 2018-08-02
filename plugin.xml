@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="SmartIDReader" version="1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <name>SmartIDReader</name>
+    
+    <js-module name="SmartIDReader" src="www/SmartIDReader.js">
+        <clobbers target="SmartIDReader" />
+    </js-module>
+
+    <platform name='android'>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SmartIDReader">
+                <param name="android-package" value="org.gordeev.smartreader.SmartIDReader" />
+            </feature>
+        </config-file>
+
+        <framework src="com.android.support:appcompat-v7:25.+" />
+        <framework src="com.android.support:support-v4:+" />
+        <framework src="com.android.support.constraint:constraint-layout:1.0.2"/>
+
+        <source-file src="src/android/src/main/java/org/gordeev/smartreader/SmartIDReader.java" target-dir="src/org/gordeev/smartreader" />
+        <source-file src="src/android/src/main/java/org/gordeev/smartreader/SmartIDActivity.java" target-dir="src/org/gordeev/smartreader" />
+        <source-file src="src/android/src/main/java/org/gordeev/smartreader/SmartIDCallback.java" target-dir="src/org/gordeev/smartreader" />
+        <source-file src="src/android/src/main/java/org/gordeev/smartreader/SmartIDDraw.java" target-dir="src/org/gordeev/smartreader" />
+        <source-file src="src/android/src/main/java/org/gordeev/smartreader/SmartIDView.java" target-dir="src/org/gordeev/smartreader" />
+
+        <dependency id="cordova-android-support-gradle-release" spec="~1.7.2">
+            <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
+        </dependency>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="org.gordeev.smartreader.SmartIDActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+                <intent-filter>
+                    <action android:name="org.gordeev.smartreader.SmartIDActivity" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                 </intent-filter>
+            </activity>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+        </config-file>
+
+        <lib-file src="src/android/libs/native-libs.jar"/>
+        <lib-file src="src/android/libs/jniSmartIdEngineJar.jar"/>
+
+        <resource-file src="src/android/src/main/res/layout/activity_main.xml" target="res/layout/activity_main.xml"/>
+        <resource-file src="src/android/src/main/res/drawable/scan_layout.xml" target="res/drawable/scan_layout.xml"/>
+        
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="message">Поместите документ в область распознования</string>
+        </config-file>
+    </platform>
+
+</plugin>

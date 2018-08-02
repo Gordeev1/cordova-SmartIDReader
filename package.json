@@ -1,0 +1,17 @@
+{
+	"name": "cordova-SmartIDReader",
+	"version": "1.0.0",
+	"description": "Cordova plugin for SmartEngines ID Reader SDK's",
+	"types": "./types/index.d.ts",
+	"cordova": {
+		"id": "cordova-SmartIDReader",
+		"platforms": [
+			"ios",
+			"android"
+		]
+	},
+	"scripts": {},
+	"keywords": [],
+	"author": "Artem Gordeev",
+	"license": "ISC"
+}
