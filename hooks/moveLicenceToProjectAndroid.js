@@ -3,13 +3,13 @@ module.exports = function(ctx) {
 		return;
 	}
 
-	var childProcess = ctx.requireCordovaModule('child_process');
+	const childProcess = ctx.requireCordovaModule('child_process');
 	return childProcess.exec(
 		`cp -r ./libs/smartengine/ ./platforms/android/app/src/main/assets/data`,
 		function(error) {
 			if (error) {
-				throw new Error(
-					`[cordova-SmartIDReader] error while move licence to project: ${error.message ||
+				console.log(
+					`[SmartIDReaderPlugin] error while move licence to android project: ${error.message ||
 						error}`
 				);
 			}

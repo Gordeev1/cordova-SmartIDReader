@@ -14,6 +14,9 @@
             </feature>
         </config-file>
 
+        <hook src="hooks/moveLicenceToProjectAndroid.js" type="after_platform_add" />
+        <hook src="hooks/moveLicenceToProjectAndroid.js" type="after_plugin_add" />
+
         <framework src="com.android.support:appcompat-v7:25.+" />
         <framework src="com.android.support:support-v4:+" />
         <framework src="com.android.support.constraint:constraint-layout:1.0.2"/>
@@ -51,6 +54,58 @@
         <config-file target="res/values/strings.xml" parent="/*">
             <string name="message">Поместите документ в область распознования</string>
         </config-file>
+    </platform>
+
+    <platform name='ios'>
+        <config-file target="config.xml" parent="/*">
+            <feature name="SmartIDReader">
+                <param name="ios-package" value="SmartIDReader" />
+            </feature>
+        </config-file>
+
+        <hook src="hooks/setupProjectIOS.js" type="after_platform_add" />
+        <hook src="hooks/setupProjectIOS.js" type="after_plugin_add" />
+        <hook src="hooks/moveLicenceToProjectIOS.js" type="after_platform_add" />
+        <hook src="hooks/moveLicenceToProjectIOS.js" type="after_plugin_add" />
+
+        <dependency id="cordova-plugin-add-swift-support" spec="~1.7.2" />
+
+        <header-file src="src/ios/SmartIDReader-Bridging-Header.h" />
+        <header-file src="src/ios/SESmartID/SmartID-Bridging-Header.h" />
+        <source-file src="src/ios/SmartIDReader.swift" />
+
+        <source-file src='src/ios/SESmartID/Controller/SmartIDViewController+Protected.h' target-dir='SESmartID/Controller' />
+        <source-file src='src/ios/SESmartID/Controller/SmartIDViewController+Protected.m' target-dir='SESmartID/Controller' />
+        <source-file src='src/ios/SESmartID/Controller/SmartIDViewController.h' target-dir='SESmartID/Controller' />
+        <source-file src='src/ios/SESmartID/Controller/SmartIDViewController.mm' target-dir='SESmartID/Controller' />
+        <source-file src='src/ios/SESmartID/Controller/ObjCPP/SmartIDViewControllerObjCPP.h' target-dir='SESmartID/Controller/ObjCPP' />
+        <source-file src='src/ios/SESmartID/Controller/ObjCPP/SmartIDViewControllerObjCPP.mm' target-dir='SESmartID/Controller/ObjCPP' />
+        <source-file src='src/ios/SESmartID/Controller/Swift/SmartIDViewControllerSwift.h' target-dir='SESmartID/Controller/Swift' />
+        <source-file src='src/ios/SESmartID/Controller/Swift/SmartIDViewControllerSwift.mm' target-dir='SESmartID/Controller/Swift' />
+        <source-file src='src/ios/SESmartID/Controller/View/RoiHelper.h' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Controller/View/RoiHelper.m' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Controller/View/SmartIDQuadrangleView.h' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Controller/View/SmartIDQuadrangleView.m' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Controller/View/SmartIDRoiView.h' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Controller/View/SmartIDRoiView.m' target-dir='SESmartID/Controller/View' />
+        <source-file src='src/ios/SESmartID/Core/SmartIDRecognitionCore.h' target-dir='SESmartID/Core' />
+        <source-file src='src/ios/SESmartID/Core/SmartIDRecognitionCore.mm' target-dir='SESmartID/Core' />
+        <source-file src='src/ios/SESmartID/Core/SmartIDVideoProcessingEngine.h' target-dir='SESmartID/Core' />
+        <source-file src='src/ios/SESmartID/Core/SmartIDVideoProcessingEngine.mm' target-dir='SESmartID/Core' />
+        <source-file src='src/ios/SESmartID/Media/SmartIDCameraManager.h' target-dir='SESmartID/Media' />
+        <source-file src='src/ios/SESmartID/Media/SmartIDCameraManager.m' target-dir='SESmartID/Media' />
+        <source-file src='src/ios/SESmartID/Media/SmartIDVideoPreviewView.h' target-dir='SESmartID/Media' />
+        <source-file src='src/ios/SESmartID/Media/SmartIDVideoPreviewView.m' target-dir='SESmartID/Media' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/SmartIDQuadrangle.h' target-dir='SESmartID/ObjCwrapped' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/SmartIDRecognitionResult.h' target-dir='SESmartID/ObjCwrapped' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/SmartIDSessionSettings.h' target-dir='SESmartID/ObjCwrapped' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDQuadrangle+CPP.h' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDQuadrangle+CPP.mm' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDRecognitionResult+CPP.h' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDRecognitionResult+CPP.mm' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDSessionSettings+CPP.h' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <source-file src='src/ios/SESmartID/ObjCwrapped/Implementation/SmartIDSessionSettings+CPP.mm' target-dir='SESmartID/ObjCwrapped/Implementation' />
+        <resource-file src='src/ios/SESmartIDCore/include/smartIdEngine' />
     </platform>
 
 </plugin>
