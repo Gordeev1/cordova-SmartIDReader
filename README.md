@@ -1,6 +1,7 @@
 # Cordova SmartIDReader
 
 Cordova SmartIDReader is a plugin for SmartEngines [iOS](https://github.com/SmartEngines/SmartIDReader-iOS-SDK) and [Android](https://github.com/SmartEngines/SmartIDReader-Android-SDK) SDK which allows you to recognize identity and property rights documents while using camera.
+
 ![preview](http://smartengines.ru/wp-content/themes/newsmart/img/index_pic1.png)
 
 # Installation
